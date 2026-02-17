@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arham Jain - Product Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #1a1a2e;
+            --accent-1: #6366f1;
+            --accent-2: #ec4899;
+            --accent-3: #06b6d4;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-1);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-2);
+            bottom: -10%;
+            left: -10%;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-3);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 15, 0.7);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 5s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            font-weight: 800;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-role {
+            color: var(--accent-3);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--accent-1);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent-2);
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-1);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-section {
+            margin-top: 4rem;
+        }
+
+        .experience-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            color: var(--accent-1);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .experience-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-1);
+            transform: scale(1.05);
+        }
+
+        .education-section {
+            margin-top: 3rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--accent-1);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-1);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">AJ.</div>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🏆 Top Fellow - NextLeap Product Manager Fellowship</div>
+            <h1>
+                Hi, I'm <span class="gradient-text">Arham Jain</span>
+            </h1>
+            <p>Product Manager building 0→1 products with AI-driven innovation. Passionate about user research, data-driven decision making, and creating experiences that solve real problems.</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured <span class="gradient-text">Projects</span></h2>
+        <div class="projects-grid">
+            <a href="https://www.canva.com/design/DAG5RoxuXdM/M3eydssPrTkvV65UrtkDCg/view?utm_content=DAG5RoxuXdM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb684c80849" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                        🎯
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">skill v 1: AI-Powered Upskilling Platform</h3>
+                        <p class="project-role">Product Manager • NextLeap Fellowship</p>
+                        <p class="project-description">Built a 0→1 MVP addressing "analysis-paralysis" among early-career professionals through AI-driven skill curation and gamified 14-day sprint challenges. Conducted comprehensive user research, developed wireframes, and designed microservices architecture with freemium business model.</p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">83%</span>
+                                <span class="metric-label">User preference</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">0→1</span>
+                                <span class="metric-label">MVP Launch</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">14-day</span>
+                                <span class="metric-label">Sprint model</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://assets.nextleap.app/submissions/CheqCaseComp.Phase1deck-f7344ea6-6fa6-4053-aa6f-98f09e6e9525.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+                        💳
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CheQ: Credit That Knows the User</h3>
+                        <p class="project-role">Product Case Competition</p>
+                        <p class="project-description">Audited CheQ's credit app UX and identified gaps in personalization and user control. Proposed "Smart Status Dashboard" with Wisor-powered nudges—personalized, actionable widgets to boost engagement, clarity, and trust. Mapped enhancements using data-driven impact and effort frameworks.</p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">5+</span>
+                                <span class="metric-label">Key features</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">100%</span>
+                                <span class="metric-label">UX audit depth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://assets.nextleap.app/submissions/Strava-ProductCritique2-5d28f37d-4fec-4c29-b19f-e0dcf05eea39.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+                        🏃
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Strava: Onboarding for Every Athlete</h3>
+                        <p class="project-role">Product Critique</p>
+                        <p class="project-description">Audited Strava's onboarding through multi-channel research, app store reviews, and persona-based journeys. Identified critical drop-offs linked to subscription confusion and limited social engagement. Proposed transparent feature tables, dynamic previews, and community suggestions prioritized via RICE framework.</p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">RICE</span>
+                                <span class="metric-label">Prioritization</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">3</span>
+                                <span class="metric-label">Key solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.canva.com/design/DAG3-OJVyoM/8XoIFkQF-x5R7_M_uz2Olw/view?utm_content=DAG3-OJVyoM&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        🧬
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Quantitative Modeling of CAR T-cell Kinetics</h3>
+                        <p class="project-role">Research Project</p>
+                        <p class="project-description">Evaluated CARRGO predator-prey framework studying cancer-CAR T-cell interactions using Lotka-Volterra equations. Analyzed kinetic parameters including proliferation rates, killing efficiency, and exhaustion dynamics. Reviewed model applications to human MRI data identifying treatment success determinants.</p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">Advanced</span>
+                                <span class="metric-label">Mathematical modeling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional <span class="gradient-text">Experience</span></h2>
+        
+        <div class="experience-section">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Product Manager Fellow</div>
+                        <div class="experience-company">NextLeap</div>
+                    </div>
+                    <div class="experience-date">Jun 2025 — Aug 2025</div>
+                </div>
+                <div class="experience-description">
+                    Completed intensive Product Management Fellowship achieving "Top Fellow" recognition. Scored 86.54% in graduation project demonstrating excellence in product strategy, user research, and execution. Built and launched AI-powered upskilling platform from 0→1.
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Summer Intern</div>
+                        <div class="experience-company">Maruti Suzuki India Limited</div>
+                    </div>
+                    <div class="experience-date">May 2024 — Jul 2024</div>
+                </div>
+                <div class="experience-description">
+                    Developed OCR-based solution to automatically extract dimensions and tolerances from engineering drawings using Python, OpenCV, and Tesseract. Implemented image preprocessing and regex-based filtering to improve text recognition accuracy, reducing manual data entry effort and errors in quality control workflows.
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Senior Associate</div>
+                        <div class="experience-company">Center for Entrepreneurial Leadership (CEL), BITS Goa</div>
+                    </div>
+                    <div class="experience-date">Aug 2023 — May 2024</div>
+                </div>
+                <div class="experience-description">
+                    Led entrepreneurial initiatives and fostered innovation culture at BITS Goa campus. Organized workshops, mentored student entrepreneurs, and facilitated startup ecosystem development.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & <span class="gradient-text">Expertise</span></h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Product Management</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">User Research</span>
+                    <span class="skill-tag">User Empathy</span>
+                    <span class="skill-tag">Metric Analysis</span>
+                    <span class="skill-tag">Wireframing</span>
+                    <span class="skill-tag">0→1 Products</span>
+                    <span class="skill-tag">RICE Framework</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">OCR/Tesseract</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Research & Analysis</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">User Segmentation</span>
+                    <span class="skill-tag">Journey Mapping</span>
+                    <span class="skill-tag">Competitive Analysis</span>
+                    <span class="skill-tag">UX Auditing</span>
+                    <span class="skill-tag">Mathematical Modeling</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Interests</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Music</span>
+                    <span class="skill-tag">Cricket</span>
+                    <span class="skill-tag">Football</span>
+                    <span class="skill-tag">Movies</span>
+                    <span class="skill-tag">Books</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="education-section">
+            <h2 style="font-size: 2rem; margin-top: 4rem;">Education</h2>
+            <div class="education-card">
+                <div class="education-degree">M.Sc. Mathematics & B.E. Chemical (Dual Degree)</div>
+                <div class="education-school">Birla Institute of Technology and Science, Pilani - Goa Campus</div>
+                <div class="education-date">Oct 2022 — Present</div>
+            </div>
+            <div class="education-card">
+                <div class="education-degree">Product Management Fellowship 🏆 Top Fellow</div>
+                <div class="education-school">NextLeap</div>
+                <div class="education-date">Jun 2025 — Aug 2025</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Let's <span class="gradient-text">Connect</span></h2>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">Open to product opportunities and collaborations</p>
+        <div class="social-links">
+            <a href="mailto:arhamjainnnn@gmail.com" title="Email">✉️ arhamjainnnn@gmail.com</a>
+            <a href="https://www.linkedin.com/in/arham-jain-3302b924b/" title="LinkedIn" target="_blank">💼 LinkedIn</a>
+            <a href="tel:+918287807068" title="Phone">📱 +91-8287807068</a>
+        </div>
+        <p style="color: var(--text-secondary); margin-top: 3rem; font-size: 0.9rem;">© 2026 Arham Jain. Based in Goa, India.</p>
+    </footer>
+</body>
+</html>
