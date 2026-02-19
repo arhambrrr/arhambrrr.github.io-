@@ -12,82 +12,34 @@
         }
 
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #1a1a2e;
-            --accent-1: #6366f1;
-            --accent-2: #ec4899;
-            --accent-3: #06b6d4;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --sage: #6B7F6E;
+            --sand: #E8DCC4;
+            --rust: #C8754A;
+            --brown: #4A3428;
+            --cream: #FBF8F3;
+            --text-dark: #2C2416;
+            --text-light: #6B5F4F;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap');
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--accent-1);
-            top: -10%;
-            right: -10%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-2);
-            bottom: -10%;
-            left: -10%;
-            animation-delay: 5s;
-        }
-
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-3);
-            top: 50%;
-            left: 50%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-50px, 50px) scale(0.9); }
-        }
-
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 1.5rem 5%;
-            backdrop-filter: blur(20px);
-            background: rgba(10, 10, 15, 0.7);
+            background: rgba(251, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid var(--brown);
         }
 
         nav .container {
@@ -100,11 +52,9 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 800;
+            color: var(--brown);
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -114,16 +64,17 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-light);
             text-decoration: none;
-            transition: color 0.3s;
             font-weight: 500;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--rust);
         }
 
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -137,194 +88,174 @@
             width: 100%;
         }
 
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--sage);
+            color: white;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transform: rotate(-2deg);
+        }
+
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
+            color: var(--brown);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 5s ease infinite;
-            background-size: 200% 200%;
+        .hero h1 span {
+            color: var(--rust);
+            position: relative;
         }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--sand);
+            z-index: -1;
+            transform: rotate(-1deg);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
         }
 
         .cta-button {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            background: var(--brown);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+            border: 3px solid var(--brown);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.5);
+            background: transparent;
+            color: var(--brown);
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--brown);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-1);
-            font-weight: 600;
-        }
-
+        /* Section Styling */
         section {
             padding: 6rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        h2 {
+        section h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
             margin-bottom: 3rem;
-            font-weight: 800;
+            color: var(--brown);
         }
 
+        /* Projects - Bento Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-bottom: 3rem;
         }
 
         .project-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
+            background: white;
+            border: 3px solid var(--brown);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 0 var(--brown);
         }
 
-        .project-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
         }
 
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
+        .project-icon.ai { background: var(--sage); }
+        .project-icon.skill { background: var(--rust); }
+        .project-icon.gokada { background: var(--brown); }
+        .project-icon.cheq { background: #E85D75; }
+        .project-icon.strava { background: var(--sage); }
+        .project-icon.research { background: #7B9E89; }
 
         .project-title {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            color: var(--brown);
         }
 
         .project-role {
-            color: var(--accent-3);
             font-size: 0.9rem;
-            margin-bottom: 1rem;
+            color: var(--rust);
             font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .project-description {
-            color: var(--text-secondary);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        .project-link {
-            display: inline-block;
-            color: var(--accent-1);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: var(--accent-2);
-        }
-
-        .project-metrics {
+        .project-tags {
             display: flex;
-            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 0.5rem;
         }
 
-        .metric {
-            display: flex;
-            flex-direction: column;
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--sand);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--brown);
         }
 
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-1);
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .experience-section {
-            margin-top: 4rem;
-        }
-
+        /* Experience Section */
         .experience-card {
-            background: var(--bg-card);
+            background: white;
+            border: 3px solid var(--brown);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
         }
 
@@ -338,112 +269,113 @@
         }
 
         .experience-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--brown);
         }
 
         .experience-company {
-            color: var(--accent-1);
             font-size: 1.1rem;
+            color: var(--rust);
             font-weight: 600;
         }
 
         .experience-date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            white-space: nowrap;
         }
 
         .experience-description {
-            color: var(--text-secondary);
+            color: var(--text-light);
             line-height: 1.7;
         }
 
+        /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .skill-category {
-            background: var(--bg-card);
+            background: white;
+            border: 3px solid var(--brown);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
         }
 
         .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--brown);
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .skill-tag {
             padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 50px;
+            background: var(--sand);
+            border-radius: 8px;
             font-size: 0.9rem;
-            color: var(--text-primary);
-            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--brown);
+            border: 2px solid transparent;
+            transition: all 0.2s;
         }
 
         .skill-tag:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: var(--accent-1);
-            transform: scale(1.05);
+            border-color: var(--rust);
+            transform: translateY(-2px);
         }
 
+        /* Education */
         .education-section {
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .education-card {
-            background: var(--bg-card);
+            background: white;
+            border: 3px solid var(--brown);
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 1.5rem;
         }
 
         .education-degree {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--brown);
             margin-bottom: 0.5rem;
         }
 
         .education-school {
-            color: var(--accent-1);
+            color: var(--rust);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .education-date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
+        /* Footer */
         footer {
+            padding: 4rem 5%;
+            background: var(--brown);
+            color: white;
             text-align: center;
-            padding: 3rem 5%;
-            background: var(--bg-card);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 1rem;
         }
 
         .social-links {
@@ -455,29 +387,34 @@
         }
 
         .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
+            color: white;
             text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 2px solid white;
+            transition: all 0.2s;
         }
 
         .social-links a:hover {
-            color: var(--accent-1);
-            transform: scale(1.2);
+            background: white;
+            color: var(--brown);
+            transform: translateY(-2px);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 gap: 1rem;
-                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 4rem 5%;
             }
 
             .experience-header {
@@ -487,15 +424,9 @@
     </style>
 </head>
 <body>
-    <div class="gradient-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-    </div>
-
     <nav>
         <div class="container">
-            <div class="logo">AJ.</div>
+            <div class="logo">AJ</div>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -507,133 +438,110 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="badge">🏆 Top Fellow - NextLeap Product Manager Fellowship</div>
-            <h1>
-                Hi, I'm <span class="gradient-text">Arham Jain</span>
-            </h1>
-            <p>Product Manager building 0→1 products with AI-driven innovation. Passionate about user research, data-driven decision making, and creating experiences that solve real problems.</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <div class="hero-badge">Available for opportunities</div>
+            <h1>Building products that <span>people actually use</span></h1>
+            <p>Product Manager with a knack for turning complex problems into simple solutions. Currently exploring AI, upskilling platforms, and everything in between.</p>
+            <a href="#contact" class="cta-button">Let's Talk</a>
         </div>
     </section>
 
     <section id="projects">
-        <h2>Featured <span class="gradient-text">Projects</span></h2>
+        <h2>Projects</h2>
+        
         <div class="projects-grid">
             <a href="https://github.com/arhambrrr/ai-receipt-scanner" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
-                        🧾
+                    <div class="project-header">
+                        <div class="project-icon ai">AR</div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI Receipt Scanner</h3>
-                        <p class="project-role">Local AI Project • Python</p>
-                        <p class="project-description">Built a privacy-first receipt scanner using Ollama and Meta's llama3.2-vision model. Automatically extracts merchant, date, items, prices, and categories from receipt photos. Features batch processing, spending analytics, and CSV/JSON export. Runs 100% locally on my laptop with no cloud dependencies.</p>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">100%</span>
-                                <span class="metric-label">Local & Private</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">7GB</span>
-                                <span class="metric-label">Vision Model</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">Open</span>
-                                <span class="metric-label">Source</span>
-                            </div>
-                        </div>
+                    <h3 class="project-title">AI Receipt Scanner</h3>
+                    <p class="project-role">Local AI Project • Python</p>
+                    <p class="project-description">Built a privacy-first receipt scanner using Ollama and Meta's llama3.2-vision model. Automatically extracts merchant, date, items, prices, and categories from receipt photos. Runs 100% locally on my laptop with no cloud dependencies.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Local AI</span>
                     </div>
                 </div>
             </a>
 
-            <a href="https://www.canva.com/design/DAG5RoxuXdM/M3eydssPrTkvV65UrtkDCg/view?utm_content=DAG5RoxuXdM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb684c80849" target="_blank" style="text-decoration: none; color: inherit;">
+            <a href="https://www.canva.com/design/DAG5RoxuXdM/M3eydssPrTkvV65UrtkDCg/view" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
-                        🎯
+                    <div class="project-header">
+                        <div class="project-icon skill">SV</div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">skill v 1: AI-Powered Upskilling Platform</h3>
-                        <p class="project-role">Product Manager • NextLeap Fellowship</p>
-                        <p class="project-description">Built a 0→1 MVP addressing "analysis-paralysis" among early-career professionals through AI-driven skill curation and gamified 14-day sprint challenges. Conducted comprehensive user research, developed wireframes, and designed microservices architecture with freemium business model.</p>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">83%</span>
-                                <span class="metric-label">User preference</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">0→1</span>
-                                <span class="metric-label">MVP Launch</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">14-day</span>
-                                <span class="metric-label">Sprint model</span>
-                            </div>
-                        </div>
+                    <h3 class="project-title">skill v 1: AI-Powered Upskilling Platform</h3>
+                    <p class="project-role">Product Manager • NextLeap Fellowship</p>
+                    <p class="project-description">Built a 0→1 MVP addressing "analysis-paralysis" among early-career professionals through AI-driven skill curation and gamified 14-day sprint challenges. Conducted comprehensive user research, developed wireframes, and designed microservices architecture with freemium business model.</p>
+                    <div class="project-tags">
+                        <span class="tag">0→1 MVP</span>
+                        <span class="tag">User Research</span>
+                        <span class="tag">AI Curation</span>
+                        <span class="tag">Gamification</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://github.com/arhambrrr/gokada" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon gokada">GK</div>
+                    </div>
+                    <h3 class="project-title">Gokada: Reverse-Engineering a Unicorn</h3>
+                    <p class="project-role">Product Case Study</p>
+                    <p class="project-description">Deep-dived into Gokada's pivot from ride-hailing to delivery. Mapped user personas, analyzed retention loops, and proposed product roadmap for Nigerian last-mile delivery. Developed tier-based pricing strategy and JTBD framework for drivers and senders.</p>
+                    <div class="project-tags">
+                        <span class="tag">Case Study</span>
+                        <span class="tag">Market Analysis</span>
+                        <span class="tag">Retention Strategy</span>
                     </div>
                 </div>
             </a>
 
             <a href="https://assets.nextleap.app/submissions/CheqCaseComp.Phase1deck-f7344ea6-6fa6-4053-aa6f-98f09e6e9525.pdf" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
-                        💳
+                    <div class="project-header">
+                        <div class="project-icon cheq">CQ</div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">CheQ: Credit That Knows the User</h3>
-                        <p class="project-role">Product Case Competition</p>
-                        <p class="project-description">Audited CheQ's credit app UX and identified gaps in personalization and user control. Proposed "Smart Status Dashboard" with Wisor-powered nudges—personalized, actionable widgets to boost engagement, clarity, and trust. Mapped enhancements using data-driven impact and effort frameworks.</p>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">5+</span>
-                                <span class="metric-label">Key features</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">100%</span>
-                                <span class="metric-label">UX audit depth</span>
-                            </div>
-                        </div>
+                    <h3 class="project-title">CheQ: Credit That Knows the User</h3>
+                    <p class="project-role">Product Case Competition</p>
+                    <p class="project-description">Audited CheQ's credit app UX and identified gaps in personalization and user control. Proposed "Smart Status Dashboard" with Wisor-powered nudges—personalized, actionable widgets to boost engagement, clarity, and trust.</p>
+                    <div class="project-tags">
+                        <span class="tag">UX Audit</span>
+                        <span class="tag">Personalization</span>
+                        <span class="tag">RICE Framework</span>
                     </div>
                 </div>
             </a>
 
             <a href="https://assets.nextleap.app/submissions/Strava-ProductCritique2-5d28f37d-4fec-4c29-b19f-e0dcf05eea39.pdf" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
-                        🏃
+                    <div class="project-header">
+                        <div class="project-icon strava">ST</div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Strava: Onboarding for Every Athlete</h3>
-                        <p class="project-role">Product Critique</p>
-                        <p class="project-description">Audited Strava's onboarding through multi-channel research, app store reviews, and persona-based journeys. Identified critical drop-offs linked to subscription confusion and limited social engagement. Proposed transparent feature tables, dynamic previews, and community suggestions prioritized via RICE framework.</p>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">RICE</span>
-                                <span class="metric-label">Prioritization</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">3</span>
-                                <span class="metric-label">Key solutions</span>
-                            </div>
-                        </div>
+                    <h3 class="project-title">Strava: Onboarding for Every Athlete</h3>
+                    <p class="project-role">Product Critique</p>
+                    <p class="project-description">Audited Strava's onboarding through multi-channel research, app store reviews, and persona-based journeys. Identified critical drop-offs linked to subscription confusion and limited social engagement.</p>
+                    <div class="project-tags">
+                        <span class="tag">Onboarding</span>
+                        <span class="tag">User Research</span>
+                        <span class="tag">RICE</span>
                     </div>
                 </div>
             </a>
 
-            <a href="https://www.canva.com/design/DAG3-OJVyoM/8XoIFkQF-x5R7_M_uz2Olw/view?utm_content=DAG3-OJVyoM&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" style="text-decoration: none; color: inherit;">
+            <a href="https://www.canva.com/design/DAG3-OJVyoM/8XoIFkQF-x5R7_M_uz2Olw/view" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #10b981, #059669);">
-                        🧬
+                    <div class="project-header">
+                        <div class="project-icon research">QM</div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Quantitative Modeling of CAR T-cell Kinetics</h3>
-                        <p class="project-role">Research Project</p>
-                        <p class="project-description">Evaluated CARRGO predator-prey framework studying cancer-CAR T-cell interactions using Lotka-Volterra equations. Analyzed kinetic parameters including proliferation rates, killing efficiency, and exhaustion dynamics. Reviewed model applications to human MRI data identifying treatment success determinants.</p>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">Advanced</span>
-                                <span class="metric-label">Mathematical modeling</span>
-                            </div>
-                        </div>
+                    <h3 class="project-title">Quantitative Modeling of CAR T-cell Kinetics</h3>
+                    <p class="project-role">Research Project</p>
+                    <p class="project-description">Evaluated CARRGO predator-prey framework studying cancer-CAR T-cell interactions using Lotka-Volterra equations. Analyzed kinetic parameters including proliferation rates, killing efficiency, and exhaustion dynamics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Mathematical Modeling</span>
+                        <span class="tag">Cancer Research</span>
                     </div>
                 </div>
             </a>
@@ -641,52 +549,51 @@
     </section>
 
     <section id="experience">
-        <h2>Professional <span class="gradient-text">Experience</span></h2>
+        <h2>Experience</h2>
         
-        <div class="experience-section">
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Product Manager Fellow</div>
-                        <div class="experience-company">NextLeap</div>
-                    </div>
-                    <div class="experience-date">Jun 2025 — Aug 2025</div>
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">Product Manager Fellow</div>
+                    <div class="experience-company">NextLeap</div>
                 </div>
-                <div class="experience-description">
-                    Completed intensive Product Management Fellowship achieving "Top Fellow" recognition. Scored 86.54% in graduation project demonstrating excellence in product strategy, user research, and execution. Built and launched AI-powered upskilling platform from 0→1.
-                </div>
+                <div class="experience-date">Jun 2025 — Aug 2025</div>
             </div>
-
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Summer Intern</div>
-                        <div class="experience-company">Maruti Suzuki India Limited</div>
-                    </div>
-                    <div class="experience-date">May 2024 — Jul 2024</div>
-                </div>
-                <div class="experience-description">
-                    Developed OCR-based solution to automatically extract dimensions and tolerances from engineering drawings using Python, OpenCV, and Tesseract. Implemented image preprocessing and regex-based filtering to improve text recognition accuracy, reducing manual data entry effort and errors in quality control workflows.
-                </div>
+            <div class="experience-description">
+                Completed intensive Product Management Fellowship achieving "Top Fellow" recognition. Scored 86.54% in graduation project demonstrating excellence in product strategy, user research, and execution. Built and launched AI-powered upskilling platform from 0→1.
             </div>
+        </div>
 
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-title">Senior Associate</div>
-                        <div class="experience-company">Center for Entrepreneurial Leadership (CEL), BITS Goa</div>
-                    </div>
-                    <div class="experience-date">Aug 2023 — May 2024</div>
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">Summer Intern</div>
+                    <div class="experience-company">Maruti Suzuki India Limited</div>
                 </div>
-                <div class="experience-description">
-                    Led entrepreneurial initiatives and fostered innovation culture at BITS Goa campus. Organized workshops, mentored student entrepreneurs, and facilitated startup ecosystem development.
+                <div class="experience-date">May 2024 — Jul 2024</div>
+            </div>
+            <div class="experience-description">
+                Developed OCR-based solution to automatically extract dimensions and tolerances from engineering drawings using Python, OpenCV, and Tesseract. Implemented image preprocessing and regex-based filtering to improve text recognition accuracy, reducing manual data entry effort and errors in quality control workflows.
+            </div>
+        </div>
+
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">Senior Associate</div>
+                    <div class="experience-company">Center for Entrepreneurial Leadership (CEL), BITS Goa</div>
                 </div>
+                <div class="experience-date">Aug 2023 — May 2024</div>
+            </div>
+            <div class="experience-description">
+                Led entrepreneurial initiatives and fostered innovation culture at BITS Goa campus. Organized workshops, mentored student entrepreneurs, and facilitated startup ecosystem development.
             </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2>Skills & <span class="gradient-text">Expertise</span></h2>
+        <h2>Skills</h2>
+        
         <div class="skills-container">
             <div class="skill-category">
                 <h3>Product Management</h3>
@@ -738,7 +645,7 @@
         </div>
 
         <div class="education-section">
-            <h2 style="font-size: 2rem; margin-top: 4rem;">Education</h2>
+            <h2>Education</h2>
             <div class="education-card">
                 <div class="education-degree">M.Sc. Mathematics & B.E. Chemical (Dual Degree)</div>
                 <div class="education-school">Birla Institute of Technology and Science, Pilani - Goa Campus</div>
@@ -753,11 +660,14 @@
     </section>
 
     <footer id="contact">
-        <h2>Let's <span class="gradient-text">Connect</span></h2>
-        <p style="color: var(--text-secondary); margin-top: 1rem;">Open to product opportunities and collaborations</p>
+        <h2>Let's Connect</h2>
+        <p style="opacity: 0.8; margin-top: 1rem;">Open to product opportunities and collaborations</p>
         <div class="social-links">
-            <a href="/cdn-cgi/l/email-protection#a9c8dbc1c8c4c3c8c0c7c7c7c7e9cec4c8c0c587cac6c4" title="Email">✉️ <span class="__cf_email__" data-cfemail="a2c3d0cac3cfc8c3cbcccccccce2c5cfc3cbce8cc1cdcf">[email&#160;protected]</span></a>
-            <a href="https://www.linkedin.com/in/arham-jain-3302b924b/" title="LinkedIn" target="_blank">💼 LinkedIn</a>
-            <a href="tel:+918287807068" title="Phone">📱 +91-8287807068</a>
+            <a href="mailto:f20220039@goa.bits-pilani.ac.in">Email</a>
+            <a href="https://www.linkedin.com/in/arham-jain-3302b924b/" target="_blank">LinkedIn</a>
+            <a href="tel:+918287807068">+91-8287807068</a>
         </div>
-        <p style="c
+        <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">© 2025 Arham Jain</p>
+    </footer>
+</body>
+</html>
