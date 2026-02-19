@@ -187,31 +187,6 @@
             box-shadow: 6px 6px 0 var(--brown);
         }
 
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .project-icon.ai { background: var(--sage); }
-        .project-icon.skill { background: var(--rust); }
-        .project-icon.cheq { background: #E85D75; }
-        .project-icon.strava { background: var(--sage); }
-        .project-icon.research { background: #7B9E89; }
-
         .project-title {
             font-size: 1.5rem;
             font-weight: 800;
@@ -448,9 +423,6 @@
         <div class="projects-grid">
             <a href="https://github.com/arhambrrr/self-reflecting-agent" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon agent">MA</div>
-                    </div>
                     <h3 class="project-title">Self-Reflecting Multi-Agent System</h3>
                     <p class="project-role">AI Research Project • Python</p>
                     <p class="project-description">Built a multi-agent AI system with 4 specialized agents (Generator, Validator, Critic, Synthesizer) that iteratively improve code through feedback loops. Features anti-sycophancy design with model tier separation, supports multiple LLM providers (Anthropic, OpenAI, Ollama), and includes session persistence for full iteration history tracking.</p>
@@ -465,9 +437,6 @@
            
             <a href="https://drive.google.com/file/d/14TdO3Y7HaaVTnE0ccOD0_6ZRVVIHNM0k/view?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon skill">SV</div>
-                    </div>
                     <h3 class="project-title">skill v 1: AI-Powered Upskilling Platform</h3>
                     <p class="project-role">Product Manager • NextLeap Fellowship</p>
                     <p class="project-description">Built a 0→1 MVP addressing "analysis-paralysis" among early-career professionals through AI-driven skill curation and gamified 14-day sprint challenges. Conducted comprehensive user research, developed wireframes, and designed microservices architecture with freemium business model.</p>
@@ -482,9 +451,6 @@
 
                 <a href="https://assets.nextleap.app/submissions/Strava-ProductCritique2-5d28f37d-4fec-4c29-b19f-e0dcf05eea39.pdf" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon strava">ST</div>
-                    </div>
                     <h3 class="project-title">Strava: Onboarding for Every Athlete</h3>
                     <p class="project-role">Product Critique</p>
                     <p class="project-description">Audited Strava's onboarding through multi-channel research, app store reviews, and persona-based journeys. Identified critical drop-offs linked to subscription confusion and limited social engagement.</p>
@@ -498,9 +464,6 @@
 
             <a href="https://github.com/arhambrrr/ai-receipt-scanner" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon ai">AR</div>
-                    </div>
                     <h3 class="project-title">AI Receipt Scanner</h3>
                     <p class="project-role">Local AI Project • Python</p>
                     <p class="project-description">Built a privacy-first receipt scanner using Ollama and Meta's llama3.2-vision model. Automatically extracts merchant, date, items, prices, and categories from receipt photos. Runs 100% locally on my laptop with no cloud dependencies.</p>
@@ -515,9 +478,6 @@
 
             <a href="https://assets.nextleap.app/submissions/CheqCaseComp.Phase1deck-f7344ea6-6fa6-4053-aa6f-98f09e6e9525.pdf" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon cheq">CQ</div>
-                    </div>
                     <h3 class="project-title">CheQ: Credit That Knows the User</h3>
                     <p class="project-role">Product Case Competition</p>
                     <p class="project-description">Audited CheQ's credit app UX and identified gaps in personalization and user control. Proposed "Smart Status Dashboard" with Wisor-powered nudges—personalized, actionable widgets to boost engagement, clarity, and trust.</p>
@@ -531,9 +491,6 @@
 
             <a href="https://drive.google.com/file/d/1Xa8LZDyDiM69e_cJAvjxG_NJwyGk6GJ3/view?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon research">QM</div>
-                    </div>
                     <h3 class="project-title">Quantitative Modeling of CAR T-cell Kinetics</h3>
                     <p class="project-role">Research Project</p>
                     <p class="project-description">Evaluated CARRGO predator-prey framework studying cancer-CAR T-cell interactions using Lotka-Volterra equations. Analyzed kinetic parameters including proliferation rates, killing efficiency, and exhaustion dynamics.</p>
@@ -661,11 +618,8 @@
         <h2>Let's Connect</h2>
         <p style="opacity: 0.8; margin-top: 1rem;">Open to product opportunities and collaborations</p>
         <div class="social-links">
-            <a href="mailto:f20220039@goa.bits-pilani.ac.in">Email</a>
+            <a href="/cdn-cgi/l/email-protection#f197c3c1c3c3c1c1c2c8b1969e90df93988582dc81989d909f98df9092df989f">Email</a>
             <a href="https://www.linkedin.com/in/arham-jain-3302b924b/" target="_blank">LinkedIn</a>
             <a href="tel:+918287807068">+91-8287807068</a>
         </div>
-        <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">© 2025 Arham Jain</p>
-    </footer>
-</body>
-</html>
+        <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;"
